@@ -63,6 +63,7 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
+  // BELOW IS STUFF YOU ADD TO THIS FILE IF YOU WANT IT
   // "exclude": [
   //   // here you can specify files that should NOT be included in the project-wide compilation
   //   // by default, node_modules folder is excluded
