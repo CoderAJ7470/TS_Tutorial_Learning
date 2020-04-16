@@ -41,7 +41,7 @@
 
 // -------------------------------------
 
-// enums entries have indices like arrays e.g. 0, 1, 2, etc
+// enum entries have indices like arrays e.g. 0, 1, 2, etc
 enum ENGINE_TYPES {
   GENERAL_ELECTRIC = "CF6-80",
   ROLLS_ROYCE = "RB211-524",
