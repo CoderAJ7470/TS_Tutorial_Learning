@@ -1,32 +1,46 @@
-class DepartmentTwo {
-  private name: string;
-  private employees: string[] = [];
+// You can declare and initialized class fields directly in the constructor
+class DepartmentFour {
+  private employeesFour: string[] = [];
 
-  constructor(user: string) {
-    this.name = user;
+  // You have to specify that name is public otherwise TS will not know
+  // the type of variable that name is; also, readonly is a TS keyword only;
+  // it does not exist in JS
+  constructor(private id: string, private name: string) {
   }
 
   // a method in this contructor
-  describe (this: DepartmentTwo) {
-    console.log('Department: ', this.name);
+  describe (this: DepartmentFour) {
+    console.log('Department: ', this.id, this.name);
   }
 
   addEmployee(employee: string) {
-    this.employees.push(employee);
+    this.employeesFour.push(employee);
   }
 
   printEmployeeInformation() {
-    console.log('Total employes: ', this.employees.length, '\nEmployees: ', this.employees);
+    console.log('Total employes: ', this.employeesFour.length, '\nemployeesFour: ', this.employeesFour);
   }
 }
 
-// creating a new Department object
-const accountingTwo = new DepartmentTwo('Accounting_Two');
+// ITDepartment inherits everything the base class has (which is DepartmentFour)
+class ITDepartment extends DepartmentFour {
+  constructor(id: string, public admins: string[]) {
+    super(id, 'IT');
+  }
+}
 
-accountingTwo.addEmployee('Max');
-accountingTwo.addEmployee('Manu');
+const itAccounting = new ITDepartment("d4", ['Adam', 'Sally']);
 
-// console.log('The new dept is ', accounting);
+class AccountingDepartment extends DepartmentFour {
+  constructor(id: string, private reports: string[]) {
+    super(id, 'Accounting');
+  }
 
-accountingTwo.describe();
-accountingTwo.printEmployeeInformation();
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  getReports() {
+    console.log('Found the following reports: ', this.reports);
+  }
+}
