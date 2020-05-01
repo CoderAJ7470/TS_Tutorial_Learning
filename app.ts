@@ -1,46 +1,24 @@
-// You can declare and initialized class fields directly in the constructor
-class DepartmentFour {
-  private employeesFour: string[] = [];
+// Interfaces are only present in TS, not JS
+// They can be used to create a custom type,
+// like the Person type below
+interface Person {
+  name: string;
+  age: number;
 
-  // You have to specify that name is public otherwise TS will not know
-  // the type of variable that name is; also, readonly is a TS keyword only;
-  // it does not exist in JS
-  constructor(private id: string, private name: string) {
-  }
+  greet(phrase: string): void
+}
 
-  // a method in this contructor
-  describe (this: DepartmentFour) {
-    console.log('Department: ', this.id, this.name);
-  }
+let userOne: Person;
 
-  addEmployee(employee: string) {
-    this.employeesFour.push(employee);
-  }
+// must be of type Person and match the 
+// object properties of Person declared above
+userOne = {
+  name: 'John',
+  age: 40,
 
-  printEmployeeInformation() {
-    console.log('Total employes: ', this.employeesFour.length, '\nemployeesFour: ', this.employeesFour);
+  greet(phrase: string) {
+    console.log(`${phrase} ${this.name}`);
   }
 }
 
-// ITDepartment inherits everything the base class has (which is DepartmentFour)
-class ITDepartment extends DepartmentFour {
-  constructor(id: string, public admins: string[]) {
-    super(id, 'IT');
-  }
-}
-
-const itAccounting = new ITDepartment("d4", ['Adam', 'Sally']);
-
-class AccountingDepartment extends DepartmentFour {
-  constructor(id: string, private reports: string[]) {
-    super(id, 'Accounting');
-  }
-
-  addReport(text: string) {
-    this.reports.push(text);
-  }
-
-  getReports() {
-    console.log('Found the following reports: ', this.reports);
-  }
-}
+userOne.greet('Hello. My name is');
